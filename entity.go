@@ -1,5 +1,4 @@
-// acgo
-package entity
+package acmogo
 
 import (
 	"fmt"

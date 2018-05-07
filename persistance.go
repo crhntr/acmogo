@@ -1,4 +1,4 @@
-package entity
+package acmogo
 
 import "github.com/globalsign/mgo"
 

@@ -1,7 +1,7 @@
-package entity_test
+package acmogo_test
 
 import (
-	"github.com/crhntr/litsphere/internal/entity"
+	"github.com/crhntr/acmogo"
 	"github.com/globalsign/mgo/bson"
 )
 
@@ -13,28 +13,28 @@ const (
 
 type (
 	User struct {
-		entity.Entity `bson:",inline"`
+		acmogo.Entity `bson:",inline"`
 		Teams         []bson.ObjectId `bson:"teams"`
 	}
 
 	Team struct {
-		entity.Entity `bson:",inline"`
+		acmogo.Entity `bson:",inline"`
 	}
 
 	Post struct {
-		entity.Entity `bson:",inline"`
+		acmogo.Entity `bson:",inline"`
 		N             int `bson:"n"`
 	}
 )
 
-func (this User) Ref() entity.Reference {
-	return entity.Reference{UserCol, this.ID}
+func (this User) Ref() acmogo.Reference {
+	return acmogo.Reference{UserCol, this.ID}
 }
 
-func (this Team) Ref() entity.Reference {
-	return entity.Reference{TeamCol, this.ID}
+func (this Team) Ref() acmogo.Reference {
+	return acmogo.Reference{TeamCol, this.ID}
 }
 
-func (this Post) Ref() entity.Reference {
-	return entity.Reference{PostCol, this.ID}
+func (this Post) Ref() acmogo.Reference {
+	return acmogo.Reference{PostCol, this.ID}
 }

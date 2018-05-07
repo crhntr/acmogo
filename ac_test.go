@@ -1,23 +1,23 @@
-package entity_test
+package acmogo_test
 
 import (
 	"testing"
 
-	"github.com/crhntr/litsphere/internal/entity"
+	"github.com/crhntr/acmogo"
 	"github.com/globalsign/mgo/bson"
 )
 
 func TestACL(t *testing.T) {
-	user0 := User{Entity: entity.New()}
-	user1 := User{Entity: entity.New()}
-	// user2 := User{Entity: entity.New()}
+	user0 := User{Entity: acmogo.New()}
+	user1 := User{Entity: acmogo.New()}
+	// user2 := User{Entity: acmogo.New()}
 
-	team0 := Team{Entity: entity.New()}
-	team1 := Team{Entity: entity.New()}
-	post0 := Post{Entity: entity.New()}
+	team0 := Team{Entity: acmogo.New()}
+	team1 := Team{Entity: acmogo.New()}
+	post0 := Post{Entity: acmogo.New()}
 
-	identityZeroVal := entity.Reference{}
-	if err := post0.SetCreator(identityZeroVal); err == nil {
+	idacentityZeroVal := acmogo.Reference{}
+	if err := post0.SetCreator(idacentityZeroVal); err == nil {
 		t.Fatal()
 	}
 	if err := post0.SetCreator(user0.Ref()); err != nil {
@@ -135,12 +135,12 @@ func TestACL(t *testing.T) {
 	}
 
 	post0.Public = true
-	user2 := User{Entity: entity.New()}
+	user2 := User{Entity: acmogo.New()}
 	if !post0.ReadPermitted(user2) {
 		t.Error("read should be permitted")
 	}
 }
 
 func TestMakeReferenceList(t *testing.T) {
-	entity.MakeReferenceList("col", []bson.ObjectId{bson.NewObjectId(), bson.NewObjectId()}...)
+	acmogo.MakeReferenceList("col", []bson.ObjectId{bson.NewObjectId(), bson.NewObjectId()}...)
 }
