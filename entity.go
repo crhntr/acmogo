@@ -49,7 +49,7 @@ func FilterReferenceList(ids []Reference, cutset ...Reference) []Reference {
 	filtered := ids[:0]
 	for _, id := range cutset {
 		for _, idx := range ids {
-			if id.ID != idx.ID && id.Col != idx.Col {
+			if id.ID != idx.ID || id.Col != idx.Col {
 				filtered = append(filtered, idx)
 			}
 		}
