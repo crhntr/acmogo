@@ -7,5 +7,3 @@ Download:
 ```shell
 go get github.com/crhntr/acmogo
 ```
-
-See test files for example usage.
